@@ -1,20 +1,21 @@
-import mongoos from "mongoose";
+import mongoose from "mongoose";
 import cors from "cors";
 import express from "express";
-import { test1 } from "./backend/controllers/alumno.controller.js";
+import dotenv from "dotenv";
+import { test } from "./backend/controllers/alumno.controller.js";
+dotenv.config();
 
-dotenv.config()
-mongoose.conect(process.env.urldb)
+mongoose.connect(process.env.urlbase)
 .then(()=>{
-    console.long("funciona la base de datos")
+    console.log("jala esta madre")
 })
 .catch((error)=>{
-    console.lag("No funciona ya salio", error)
+    console.log("no funciona esta madre ", error)
 })
 
 const app=express();
-app.use(corse());
-app.liten(5003, ()=>{
-    console.log("se escucha el servidor")
+app.use(cors());
+app.listen(4000, ()=>{
+    console.log("Se escucha correcto, no escucha borroso")
 })
-test1()
+test()
